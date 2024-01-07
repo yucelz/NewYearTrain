@@ -14,14 +14,17 @@ public class PlayerMovement : MonoBehaviour
     private float startDashTime;
     private float horizontalInput;
     private bool facingRight = true;
+    public GameObject echo;
+    [SerializeField] float echoSpawnDuration;
 
     PlayerInputActions playerInputActions;
 
     private Rigidbody2D rb;
     private float gravityScale;
 
-    public GameObject echo;
-    [SerializeField] float echoSpawnDuration;
+    [SerializeField] Vector2 boxSize;
+    [SerializeField] float boxDistance;
+    [SerializeField] LayerMask layerMask;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -55,8 +58,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private bool OnGround() {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, boxDistance, layerMask)) {
+            Debug.Log("ground");
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawCube(transform.position - (transform.up) * boxDistance, boxSize);
+    }
+
     public void Jump(InputAction.CallbackContext context) {
-        if (!dashing) {
+        if (!dashing && OnGround()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }

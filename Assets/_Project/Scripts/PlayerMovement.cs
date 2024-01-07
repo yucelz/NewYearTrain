@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 boxSize;
     [SerializeField] float boxDistance;
     [SerializeField] LayerMask layerMask;
+    private float jumpBuffer = 0.2f;
+    private float lastJumpPressed;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -48,13 +50,20 @@ public class PlayerMovement : MonoBehaviour
 
         // get player input and move if not dashing
         if (!dashing) {
+
             horizontalInput = playerInputActions.Player.Movement.ReadValue<float>();
             rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
-            CancelInvoke();
+
+            // player pressed jump just before landing so jump
+            if (OnGround() && lastJumpPressed + jumpBuffer > Time.time && rb.velocity.y < 0) {
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
         }
+        // dash is over
         else if (Time.time - startDashTime > dashDuration) {
             dashing = false;
             rb.gravityScale = gravityScale;
+            CancelInvoke();
         }
     }
 
@@ -78,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         if (!dashing && OnGround()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
+        lastJumpPressed = Time.time;
     }
 
     public void Dash(InputAction.CallbackContext context) {

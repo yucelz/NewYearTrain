@@ -341,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 985126766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.877193, y: -4.95, z: 0}
+  m_LocalPosition: {x: -0.877193, y: -5.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpSpeed: 12
+  jumpSpeed: 15
   dashSpeed: 20
   dashDuration: 0.25
   echo: {fileID: 5778440778596034961, guid: 26c64dfd8390249c1b6970bd49a534c9, type: 3}

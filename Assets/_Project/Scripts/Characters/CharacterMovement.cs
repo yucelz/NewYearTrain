@@ -55,7 +55,7 @@ public class CharacterMovement : MonoBehaviour
         if (!dashing)
         {
             horizontalInput = characterInputActions.Player.Movement.ReadValue<Vector2>();
-            Debug.Log("horizontalInput:" + horizontalInput.x);
+            //Debug.Log("horizontalInput:" + horizontalInput.x);
             rb.velocity = new Vector2(horizontalInput.x * speed, rb.velocity.y);
             if (horizontalInput.x != 0)
             { TurnCheck(); }

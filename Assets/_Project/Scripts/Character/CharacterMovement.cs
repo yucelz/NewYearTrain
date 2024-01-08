@@ -19,6 +19,8 @@ public class CharacterMovement : MonoBehaviour {
 
     private Rigidbody2D rb;
     private float gravityScale;
+    // for player floating when in air
+    [SerializeField] float glideGravityScale;
 
     [SerializeField] Vector2 boxSize;
     [SerializeField] float boxDistance;
@@ -33,6 +35,7 @@ public class CharacterMovement : MonoBehaviour {
         characterInputActions.Player.Enable();
         characterInputActions.Player.Jump.performed += Jump;
         characterInputActions.Player.Dash.performed += Dash;
+        gravityScale = rb.gravityScale;
     }
 
     // Update is called once per frame
@@ -52,7 +55,10 @@ public class CharacterMovement : MonoBehaviour {
         // get player input and move if not dashing
         if (!dashing) {
             horizontalInput = characterInputActions.Player.Movement.ReadValue<float>();
-            //Debug.Log("horizontalInput:" + horizontalInput.x);
+            Debug.Log(horizontalInput);
+            if (horizontalInput != 0)
+                { TurnCheck(); }
+
             rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
             // player pressed jump just before landing so jump
@@ -60,8 +66,14 @@ public class CharacterMovement : MonoBehaviour {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             }
 
-            if (horizontalInput != 0)
-                { TurnCheck(); }
+            float glideInput = characterInputActions.Player.Glide.ReadValue<float>();
+
+            if (!OnGround() && glideInput == 1 && rb.velocity.y < 0) {
+                rb.gravityScale = glideGravityScale;
+            }
+            else {
+                rb.gravityScale = gravityScale;
+            }
         }
         else if (Time.time - startDashTime > dashDuration) {
             dashing = false;
@@ -74,6 +86,7 @@ public class CharacterMovement : MonoBehaviour {
         return Physics2D.BoxCast(transform.position, boxSize, 0, Vector2.down, boxDistance, layerMask);
     }
 
+    // visualize boxcast
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawCube(transform.position - (transform.up) * boxDistance, boxSize);
@@ -90,11 +103,14 @@ public class CharacterMovement : MonoBehaviour {
         if (!dashing) {
             dashing = true;
             startDashTime = Time.time;
-            gravityScale = rb.gravityScale;
             rb.gravityScale = 0;
             rb.velocity = new Vector2(Mathf.Sign(transform.rotation.y) * dashSpeed, 0);
             //InvokeRepeating("CreateEcho", 0, echoSpawnDuration);
         }
+    }
+
+    public void Float() {
+
     }
 
     // creates ghost/echo of player on dash

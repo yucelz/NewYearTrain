@@ -53,6 +53,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Glide"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd38cbda-7976-477b-917b-8ed8c92bfd8c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -101,8 +110,30 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""d067c3a2-64d4-4e23-8fc2-dd3ee0ccc697"",
+                    ""name"": """",
+                    ""id"": ""e7344709-4594-461f-b23d-cd663b79b609"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Glide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df596657-91e8-447f-9097-9ddf016b537e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Glide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""5aeb178d-167d-4579-8cc7-63e6834f22d4"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -113,7 +144,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""0bf3ce54-c451-4718-b600-8197f18bdd3b"",
+                    ""id"": ""82033d5b-6fd8-4519-b00b-e4e863fbffaa"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -124,7 +155,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""b4781994-1587-4c03-a9c1-170bf3c9f0d0"",
+                    ""id"": ""a615cbdc-2b29-4114-a22a-7641bf0ebbe2"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -134,8 +165,8 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""1e08cb22-52dc-44c2-91b0-f4f331280dd4"",
+                    ""name"": ""ArrowKeys"",
+                    ""id"": ""b0993741-1d3a-4314-8cfb-12057e6578b8"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -146,7 +177,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""bc9614a4-43b5-4787-b53a-173255f0db34"",
+                    ""id"": ""1460f6f4-48d8-4b49-87af-c07be4d1f3bf"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -157,7 +188,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""a81411d4-4a7a-409b-8fdc-1ccf3319c6d2"",
+                    ""id"": ""471f94d1-1f71-4e8a-9562-d2feda09bfb3"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -167,8 +198,8 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""4b914d17-10f2-4178-8cb8-2b4b929b4676"",
+                    ""name"": ""Joystick"",
+                    ""id"": ""f58cd2ee-a7c5-4917-9d98-217f9b7fee51"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -179,7 +210,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""40352954-4134-4225-b6a8-1cb90aa91373"",
+                    ""id"": ""420525aa-aa98-44fb-b137-b85747e8c8ff"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -190,7 +221,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""053e5aa6-dcea-4133-8243-969200f83038"",
+                    ""id"": ""ded6615f-bd2b-4a3f-9147-1e8eb37a55f5"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -200,8 +231,8 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""153ac479-ac98-40dc-9d73-966defaefcb5"",
+                    ""name"": ""D-pad"",
+                    ""id"": ""ac3a823f-b4f2-401d-8c7f-54f456194f84"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -212,7 +243,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""0892b590-7bf4-4d1d-87aa-e0ad1cd0eb78"",
+                    ""id"": ""0e26175e-4afa-492c-9260-4e07683bf8d2"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -223,7 +254,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""baa0e585-635f-443a-b6d6-ee7acf45924e"",
+                    ""id"": ""82d7979a-36c9-4df4-861a-df3060127b0a"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -265,6 +296,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Glide = m_Player.FindAction("Glide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -329,6 +361,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Glide;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -336,6 +369,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Glide => m_Wrapper.m_Player_Glide;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +388,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Glide.started += instance.OnGlide;
+            @Glide.performed += instance.OnGlide;
+            @Glide.canceled += instance.OnGlide;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -367,6 +404,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Glide.started -= instance.OnGlide;
+            @Glide.performed -= instance.OnGlide;
+            @Glide.canceled -= instance.OnGlide;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -407,5 +447,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnGlide(InputAction.CallbackContext context);
     }
 }

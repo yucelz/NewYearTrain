@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wizard : MonoBehaviour
+public class Wizard : InteractableBase,ITalkable
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private DialogueText _dialogueText;
+    public override void Interact()
     {
-        
+        Talk(_dialogueText);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Talk(DialogueText dialogueText)
     {
         
     }

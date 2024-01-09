@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private float gravityScale;
     // for player floating when in air
-    [SerializeField] float glideGravityScale;
+    [SerializeField] float glideDrag;
     [SerializeField] float groundPoundSpeed;
     private bool groundPounding;
 
@@ -55,6 +55,8 @@ public class CharacterMovement : MonoBehaviour {
 
     private void FixedUpdate() {
 
+        Debug.Log(rb.velocity);
+
         // get player input and move if not dashing
         if (!dashing && !groundPounding) {
             horizontalInput = characterInputActions.Player.Movement.ReadValue<float>();
@@ -71,11 +73,11 @@ public class CharacterMovement : MonoBehaviour {
 
             float glideInput = characterInputActions.Player.Glide.ReadValue<float>();
 
-            if (!OnGround() && glideInput == 1 && rb.velocity.y < 0) {
-                rb.gravityScale = glideGravityScale;
+            if (!OnGround() && glideInput == 1) {
+                rb.drag = glideDrag;
             }
             else {
-                rb.gravityScale = gravityScale;
+                rb.drag = 0;
             }
         }
         else if (Time.time - startDashTime > dashDuration && !groundPounding) {

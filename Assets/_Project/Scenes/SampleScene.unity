@@ -1024,6 +1024,8 @@ MonoBehaviour:
   dashDuration: 0.25
   echo: {fileID: -8653719598885068355, guid: 6e808e8bde45b4bac99c765143a89cb6, type: 3}
   echoSpawnDuration: 0.05
+  glideDrag: 5
+  groundPoundSpeed: 40
   boxSize: {x: 0.88, y: 0.29}
   boxDistance: -0.81
   layerMask:

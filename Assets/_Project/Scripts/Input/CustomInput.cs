@@ -62,6 +62,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pound"",
+                    ""type"": ""Button"",
+                    ""id"": ""c463cd27-141f-47d1-80cb-3ad283ec8fcb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -262,6 +271,28 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""865c96fa-ec27-4c5c-80ac-3a7bfec8f614"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pound"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be7cd1e8-82e5-4085-b0e2-84f6205982f7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pound"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -297,6 +328,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Glide = m_Player.FindAction("Glide", throwIfNotFound: true);
+        m_Player_Pound = m_Player.FindAction("Pound", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -362,6 +394,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Glide;
+    private readonly InputAction m_Player_Pound;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -370,6 +403,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Glide => m_Wrapper.m_Player_Glide;
+        public InputAction @Pound => m_Wrapper.m_Player_Pound;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +425,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Glide.started += instance.OnGlide;
             @Glide.performed += instance.OnGlide;
             @Glide.canceled += instance.OnGlide;
+            @Pound.started += instance.OnPound;
+            @Pound.performed += instance.OnPound;
+            @Pound.canceled += instance.OnPound;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -407,6 +444,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Glide.started -= instance.OnGlide;
             @Glide.performed -= instance.OnGlide;
             @Glide.canceled -= instance.OnGlide;
+            @Pound.started -= instance.OnPound;
+            @Pound.performed -= instance.OnPound;
+            @Pound.canceled -= instance.OnPound;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -448,5 +488,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnGlide(InputAction.CallbackContext context);
+        void OnPound(InputAction.CallbackContext context);
     }
 }

@@ -21,6 +21,8 @@ public class CharacterMovement : MonoBehaviour {
     private float gravityScale;
     // for player floating when in air
     [SerializeField] float glideGravityScale;
+    [SerializeField] float groundPoundSpeed;
+    private bool groundPounding;
 
     [SerializeField] Vector2 boxSize;
     [SerializeField] float boxDistance;
@@ -35,6 +37,7 @@ public class CharacterMovement : MonoBehaviour {
         characterInputActions.Player.Enable();
         characterInputActions.Player.Jump.performed += Jump;
         characterInputActions.Player.Dash.performed += Dash;
+        characterInputActions.Player.Pound.performed += GroundPound;
         gravityScale = rb.gravityScale;
     }
 
@@ -53,9 +56,9 @@ public class CharacterMovement : MonoBehaviour {
     private void FixedUpdate() {
 
         // get player input and move if not dashing
-        if (!dashing) {
+        if (!dashing && !groundPounding) {
             horizontalInput = characterInputActions.Player.Movement.ReadValue<float>();
-            Debug.Log(horizontalInput);
+
             if (horizontalInput != 0)
                 { TurnCheck(); }
 
@@ -75,10 +78,14 @@ public class CharacterMovement : MonoBehaviour {
                 rb.gravityScale = gravityScale;
             }
         }
-        else if (Time.time - startDashTime > dashDuration) {
+        else if (Time.time - startDashTime > dashDuration && !groundPounding) {
             dashing = false;
             rb.gravityScale = gravityScale;
             CancelInvoke();
+        }
+        else if (groundPounding && OnGround()) {
+            StartCoroutine(DelayMovement());
+            rb.gravityScale = gravityScale;
         }
     }
 
@@ -93,14 +100,14 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     public void Jump(InputAction.CallbackContext context) {
-        if (!dashing && OnGround()) {
+        if (!dashing && OnGround() && !groundPounding) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
 
     public void Dash(InputAction.CallbackContext context) {
         // only allow dash input if not already dashing
-        if (!dashing) {
+        if (!dashing && !groundPounding) {
             dashing = true;
             startDashTime = Time.time;
             rb.gravityScale = 0;
@@ -109,8 +116,18 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
-    public void Float() {
+    public void GroundPound(InputAction.CallbackContext context) {
+        if (!dashing) {
+            groundPounding = true;
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.down * groundPoundSpeed;
+        }
+    }
 
+    // wait so that player cant move right after landing from ground pound
+    private IEnumerator DelayMovement() {
+        yield return new WaitForSeconds(0.25f);
+        groundPounding = false;
     }
 
     // creates ghost/echo of player on dash

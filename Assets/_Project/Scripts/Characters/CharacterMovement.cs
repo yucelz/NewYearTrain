@@ -25,6 +25,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float boxDistance;
     [SerializeField] LayerMask layerMask;
 
+    public bool isOnThePlatform;
+
+    public Rigidbody2D platformRb;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -54,9 +58,7 @@ public class CharacterMovement : MonoBehaviour
         // get player input and move if not dashing
         if (!dashing)
         {
-            horizontalInput = characterInputActions.Player.Movement.ReadValue<Vector2>();
-            //Debug.Log("horizontalInput:" + horizontalInput.x);
-            rb.velocity = new Vector2(horizontalInput.x * speed, rb.velocity.y);
+            Move(isOnThePlatform);
             if (horizontalInput.x != 0)
             { TurnCheck(); }
 
@@ -67,6 +69,20 @@ public class CharacterMovement : MonoBehaviour
             dashing = false;
             rb.gravityScale = gravityScale;
         }
+    }
+
+    private void Move(bool isOnThePlatform)
+    {
+        horizontalInput = characterInputActions.Player.Movement.ReadValue<Vector2>();
+        if (!isOnThePlatform)
+        {
+            rb.velocity = new Vector2(horizontalInput.x * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2((horizontalInput.x * speed) + platformRb.velocity.x, rb.velocity.y);
+        }
+
     }
 
     private bool OnGround()
@@ -90,6 +106,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         if (!dashing && OnGround())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);

@@ -9,14 +9,14 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float _speed = 3f;
     private Vector3 _targetPos;
 
-    private CharacterMovement _characterMovement;
+    private PlayerMovement _playerMovement;
     private Rigidbody2D _platformRb;
     private Vector3 _moveDirection;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        _characterMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>();
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _platformRb = GetComponent<Rigidbody2D>();
     }
     void Start()
@@ -54,8 +54,8 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _characterMovement.isOnThePlatform = true;
-            _characterMovement.platformRb = _platformRb;
+            _playerMovement.isOnThePlatform = true;
+            _playerMovement.platformRb = _platformRb;
         }
     }
 
@@ -63,7 +63,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _characterMovement.isOnThePlatform = true;
+            _playerMovement.isOnThePlatform = true;
         }
     }
 }

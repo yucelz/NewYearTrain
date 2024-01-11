@@ -15,12 +15,13 @@ public class CharacterMovement : MonoBehaviour {
     public GameObject echo;
     [SerializeField] float echoSpawnDuration;
 
-    private CustomInput characterInputActions;
+    protected CustomInput characterInputActions;
 
     private Rigidbody2D rb;
     private float gravityScale;
     // for player floating when in air
     [SerializeField] float glideDrag;
+    private bool glideActive;
     [SerializeField] float groundPoundSpeed;
     private bool groundPounding;
 
@@ -36,27 +37,15 @@ public class CharacterMovement : MonoBehaviour {
         characterInputActions = new CustomInput();
         characterInputActions.Player.Enable();
         characterInputActions.Player.Jump.performed += Jump;
-        characterInputActions.Player.Dash.performed += Dash;
-        characterInputActions.Player.Pound.performed += GroundPound;
         gravityScale = rb.gravityScale;
     }
 
     // Update is called once per frame
     private void Update() {
-        // adjust player orientation according to input
 
-        /*if (!_facingRight && horizontalInput.x > 0 || _facingRight && horizontalInput.x < 0)
-        {
-            transform.localScale = -transform.localScale;
-            _facingRight = !_facingRight;
-        }
-        */
     }
 
     private void FixedUpdate() {
-
-        Debug.Log(rb.velocity);
-
         // get player input and move if not dashing
         if (!dashing && !groundPounding) {
             horizontalInput = characterInputActions.Player.Movement.ReadValue<float>();
@@ -73,7 +62,7 @@ public class CharacterMovement : MonoBehaviour {
 
             float glideInput = characterInputActions.Player.Glide.ReadValue<float>();
 
-            if (!OnGround() && glideInput == 1) {
+            if (glideActive && !OnGround() && glideInput == 1) {
                 rb.drag = glideDrag;
             }
             else {
@@ -130,6 +119,18 @@ public class CharacterMovement : MonoBehaviour {
     private IEnumerator DelayMovement() {
         yield return new WaitForSeconds(0.25f);
         groundPounding = false;
+    }
+
+    public void ActivateDash() {
+        characterInputActions.Player.Dash.performed += Dash;
+    }
+
+    public void ActivateGroundPound() {
+        characterInputActions.Player.Pound.performed += GroundPound;
+    }
+
+    public void ActivateGlide() {
+        glideActive = true;
     }
 
     // creates ghost/echo of player on dash

@@ -15,13 +15,14 @@ public class CharacterMovement : MonoBehaviour {
     public GameObject echo;
     [SerializeField] float echoSpawnDuration;
 
-    protected CustomInput characterInputActions;
+    [SerializeField] InputReader inputReader;
 
     private Rigidbody2D rb;
     private float gravityScale;
     // for player floating when in air
     [SerializeField] float glideDrag;
     private bool glideActive;
+    private float glideInput;
     [SerializeField] float groundPoundSpeed;
     private bool groundPounding;
 
@@ -32,12 +33,13 @@ public class CharacterMovement : MonoBehaviour {
     private float lastJumpPressed;
 
     // Start is called before the first frame update
-    private void Awake() {
+    private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        characterInputActions = new CustomInput();
-        characterInputActions.Player.Enable();
-        characterInputActions.Player.Jump.performed += Jump;
         gravityScale = rb.gravityScale;
+
+        inputReader.MoveEvent += HandleMove;
+        inputReader.GlideEvent += HandleGlide;
+        inputReader.JumpEvent += Jump;
     }
 
     // Update is called once per frame
@@ -48,7 +50,6 @@ public class CharacterMovement : MonoBehaviour {
     private void FixedUpdate() {
         // get player input and move if not dashing
         if (!dashing && !groundPounding) {
-            horizontalInput = characterInputActions.Player.Movement.ReadValue<float>();
 
             if (horizontalInput != 0)
                 { TurnCheck(); }
@@ -60,9 +61,7 @@ public class CharacterMovement : MonoBehaviour {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             }
 
-            float glideInput = characterInputActions.Player.Glide.ReadValue<float>();
-
-            if (glideActive && !OnGround() && glideInput == 1) {
+            if (!OnGround() && glideInput == 1) {
                 rb.drag = glideDrag;
             }
             else {
@@ -80,6 +79,16 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
+    private void HandleMove(float input) {
+        horizontalInput = input;
+    }
+
+    private void HandleGlide(float input) {
+        if (glideActive) {
+            glideInput = input;
+        }
+    }
+
     private bool OnGround() {
         return Physics2D.BoxCast(transform.position, boxSize, 0, Vector2.down, boxDistance, layerMask);
     }
@@ -90,13 +99,13 @@ public class CharacterMovement : MonoBehaviour {
         Gizmos.DrawCube(transform.position - (transform.up) * boxDistance, boxSize);
     }
 
-    public void Jump(InputAction.CallbackContext context) {
+    public void Jump() {
         if (!dashing && OnGround() && !groundPounding) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
 
-    public void Dash(InputAction.CallbackContext context) {
+    public void Dash() {
         // only allow dash input if not already dashing
         if (!dashing && !groundPounding) {
             dashing = true;
@@ -107,7 +116,7 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
-    public void GroundPound(InputAction.CallbackContext context) {
+    public void GroundPound() {
         if (!dashing) {
             groundPounding = true;
             rb.gravityScale = 0;
@@ -122,11 +131,11 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     public void ActivateDash() {
-        characterInputActions.Player.Dash.performed += Dash;
+        inputReader.DashEvent += Dash;
     }
 
     public void ActivateGroundPound() {
-        characterInputActions.Player.Pound.performed += GroundPound;
+        inputReader.PoundEvent += GroundPound;
     }
 
     public void ActivateGlide() {
@@ -137,10 +146,6 @@ public class CharacterMovement : MonoBehaviour {
     private void CreateEcho() {
         GameObject echoCopy = Instantiate(echo, transform.position, Quaternion.identity);
         Destroy(echoCopy, 1f);
-    }
-
-    private void OnDisable() {
-        characterInputActions.Disable();
     }
 
     #region Turn Check

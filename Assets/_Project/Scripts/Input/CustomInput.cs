@@ -71,6 +71,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenVendingMachine"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a53dbc4-d747-4e2b-9371-c32241f127b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -293,6 +302,17 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""Pound"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""400a65ca-91ad-4935-96eb-116ee38ea935"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""OpenVendingMachine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -329,6 +349,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Glide = m_Player.FindAction("Glide", throwIfNotFound: true);
         m_Player_Pound = m_Player.FindAction("Pound", throwIfNotFound: true);
+        m_Player_OpenVendingMachine = m_Player.FindAction("OpenVendingMachine", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -395,6 +416,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Glide;
     private readonly InputAction m_Player_Pound;
+    private readonly InputAction m_Player_OpenVendingMachine;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -404,6 +426,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Glide => m_Wrapper.m_Player_Glide;
         public InputAction @Pound => m_Wrapper.m_Player_Pound;
+        public InputAction @OpenVendingMachine => m_Wrapper.m_Player_OpenVendingMachine;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -428,6 +451,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Pound.started += instance.OnPound;
             @Pound.performed += instance.OnPound;
             @Pound.canceled += instance.OnPound;
+            @OpenVendingMachine.started += instance.OnOpenVendingMachine;
+            @OpenVendingMachine.performed += instance.OnOpenVendingMachine;
+            @OpenVendingMachine.canceled += instance.OnOpenVendingMachine;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -447,6 +473,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Pound.started -= instance.OnPound;
             @Pound.performed -= instance.OnPound;
             @Pound.canceled -= instance.OnPound;
+            @OpenVendingMachine.started -= instance.OnOpenVendingMachine;
+            @OpenVendingMachine.performed -= instance.OnOpenVendingMachine;
+            @OpenVendingMachine.canceled -= instance.OnOpenVendingMachine;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -489,5 +518,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnGlide(InputAction.CallbackContext context);
         void OnPound(InputAction.CallbackContext context);
+        void OnOpenVendingMachine(InputAction.CallbackContext context);
     }
 }

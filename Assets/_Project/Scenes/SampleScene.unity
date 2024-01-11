@@ -150,11 +150,11 @@ Transform:
   m_GameObject: {fileID: 230173202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9700003, y: 3.57, z: 0}
+  m_LocalPosition: {x: 6.9399996, y: 3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1670789329673974292}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &230173204
 SpriteRenderer:
@@ -944,7 +944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &929856528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1033,6 +1033,52 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6376424390288877501, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
   m_PrefabInstance: {fileID: 1515727812}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1395729963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395729965}
+  - component: {fileID: 1395729964}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1395729964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395729963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a383827c851644c9c8824b8da6ce2da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vendingMachine: {fileID: 1884214810}
+  inputReader: {fileID: 11400000, guid: 638c0a2299fa049ccb110a413962229e, type: 2}
+--- !u!4 &1395729965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395729963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.821432, y: 1.1662091, z: -0.012079315}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1515727812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,6 +1090,12 @@ PrefabInstance:
     - target: {fileID: 4567397440322768101, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_Name
       value: GroundPoundSoda
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253088598778245812, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_Text
+      value: 'Ground Pound
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6376424390288877501, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_Pivot.x
@@ -1144,7 +1196,7 @@ PrefabInstance:
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1884214814}
+      objectReference: {fileID: 1395729964}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1167,7 +1219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VendingMachineBehaviour, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1177,7 +1233,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7573424929432752247, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30.35
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2805859162086533868, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1324,6 +1385,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashSoda
       objectReference: {fileID: 0}
+    - target: {fileID: 6253088598778245812, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_Text
+      value: 'Dash
+
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 6376424390288877501, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1417,19 +1485,31 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1670789329673974293}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1884214814}
+      objectReference: {fileID: 1395729964}
+    - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1884214810}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
@@ -1446,6 +1526,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: VendingMachineBehaviour, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
@@ -1456,7 +1540,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7573424929432752247, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22.52
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2805859162086533868, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1472,14 +1561,13 @@ GameObject:
   - component: {fileID: 1884214811}
   - component: {fileID: 1884214813}
   - component: {fileID: 1884214812}
-  - component: {fileID: 1884214814}
   m_Layer: 5
   m_Name: VendingMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884214811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1540,18 +1628,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884214810}
   m_CullTransparentMesh: 1
---- !u!114 &1884214814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884214810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2049b5e767d143f69213b633b10c30a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2089796415 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6376424390288877501, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
@@ -1568,6 +1644,12 @@ PrefabInstance:
     - target: {fileID: 4567397440322768101, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_Name
       value: GlideSoda
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253088598778245812, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_Text
+      value: 'Glide
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6376424390288877501, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_Pivot.x
@@ -1668,7 +1750,7 @@ PrefabInstance:
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1884214814}
+      objectReference: {fileID: 1395729964}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1691,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VendingMachineBehaviour, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7248119115117299073, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1701,7 +1783,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7573424929432752247, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 28.57
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2805859162086533868, guid: b736acb2ef25c4fbfafc786c0cc58a01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1718,7 +1805,6 @@ GameObject:
   - component: {fileID: 397347788}
   - component: {fileID: 397347789}
   - component: {fileID: 1670789329673974293}
-  - component: {fileID: 1670789329673974294}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1838,7 +1924,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 230173203}
   - {fileID: 978681020774453415}
   - {fileID: 7816635282301973098}
   - {fileID: 1620948100474371762}
@@ -1863,6 +1948,7 @@ MonoBehaviour:
   dashDuration: 0.25
   echo: {fileID: -8653719598885068355, guid: 6e808e8bde45b4bac99c765143a89cb6, type: 3}
   echoSpawnDuration: 0.05
+  inputReader: {fileID: 11400000, guid: 638c0a2299fa049ccb110a413962229e, type: 2}
   glideDrag: 5
   groundPoundSpeed: 40
   boxSize: {x: 0.88, y: 0.29}
@@ -1870,18 +1956,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &1670789329673974294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569652438281333367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36cfafe331e3408a8147a88bba32d40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1769465101683768880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,3 +2204,5 @@ SceneRoots:
   - {fileID: 1670789329673974292}
   - {fileID: 929856528}
   - {fileID: 501852021}
+  - {fileID: 230173203}
+  - {fileID: 1395729965}

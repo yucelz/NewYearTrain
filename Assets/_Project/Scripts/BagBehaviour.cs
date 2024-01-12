@@ -13,7 +13,7 @@ public class BagBehaviour : MonoBehaviour
     void Start()
     {
         charPreviousPositions = new List<Vector3>();
-        character = GameObject.Find("Character");
+        character = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

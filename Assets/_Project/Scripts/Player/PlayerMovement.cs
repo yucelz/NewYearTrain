@@ -32,6 +32,10 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpBuffer = 0.2f;
     private float lastJumpPressed;
 
+    public bool isOnThePlatform;
+
+    public Rigidbody2D platformRb;
+
     // Start is called before the first frame update
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +58,7 @@ public class PlayerMovement : MonoBehaviour {
             if (horizontalInput != 0)
                 { TurnCheck(); }
 
-            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+            Move();
 
             // player pressed jump just before landing so jump
             if (OnGround() && lastJumpPressed + jumpBuffer > Time.time && rb.velocity.y < 0) {
@@ -89,6 +93,15 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private void Move() {
+        if (!isOnThePlatform) {
+            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+        }
+        else {
+            rb.velocity = new Vector2((horizontalInput * speed) + platformRb.velocity.x, rb.velocity.y);
+        }
+    }
+
     private bool OnGround() {
         return Physics2D.BoxCast(transform.position, boxSize, 0, Vector2.down, boxDistance, layerMask);
     }
@@ -112,7 +125,7 @@ public class PlayerMovement : MonoBehaviour {
             startDashTime = Time.time;
             rb.gravityScale = 0;
             rb.velocity = new Vector2(Mathf.Sign(transform.rotation.y) * dashSpeed, 0);
-            //InvokeRepeating("CreateEcho", 0, echoSpawnDuration);
+            InvokeRepeating("CreateEcho", 0, echoSpawnDuration);
         }
     }
 

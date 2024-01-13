@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
 
     public void HideVendingMachine() {
         vendingMachine.SetActive(false);
+        inputReader.EnablePlayer();
     }
 
     private void DisplayVendingMachine() {
         vendingMachine.SetActive(true);
+        inputReader.DisablePlayer();
     }
 }

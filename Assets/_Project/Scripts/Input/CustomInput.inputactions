@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "OpenVendingMachine",
-                    "type": "Button",
-                    "id": "5a53dbc4-d747-4e2b-9371-c32241f127b8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,7 +256,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Pound",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -280,10 +271,27 @@
                     "action": "Pound",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Vending",
+            "id": "c0eb1a31-447f-4257-b826-52f5ea7c7d60",
+            "actions": [
+                {
+                    "name": "OpenVendingMachine",
+                    "type": "Button",
+                    "id": "3fdbd8e4-6b08-407f-81d6-98c117ebf449",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "400a65ca-91ad-4935-96eb-116ee38ea935",
+                    "id": "a06f8767-e6e3-4a3b-b253-a7bd6e7bd90d",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",

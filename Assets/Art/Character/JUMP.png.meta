@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20f392636624d40faa58fc8371c0b561
+guid: 204e02d39cf5c4f95961fdb3cf16b147
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RUNNINGRIGHT_0
+      name: JUMP_0
       rect:
         serializedVersion: 2
-        x: 21
+        x: 25
         y: 6
-        width: 293
-        height: 500
+        width: 184
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,19 +137,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 211e7b15812314184a3945dd779a0b6b
-      internalID: -1188459935
+      spriteID: 8a7a50ee77a864ff58142e66a9412364
+      internalID: 1946321636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RUNNINGRIGHT_1
+      name: JUMP_1
       rect:
         serializedVersion: 2
-        x: 311
-        y: 290
-        width: 4
+        x: 222
+        y: 6
+        width: 195
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c406756a9844d5cbed07ef22f48a2a
+      internalID: 2117506945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JUMP_2
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 64
+        width: 238
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad3577e26a8249198d689ba9f4b6a9e
+      internalID: -104658666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JUMP_3
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 2
+        width: 193
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6ef029ad9f149529ddae7ff839214b
+      internalID: 917821851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JUMP_4
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 7
+        width: 184
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe790e9e233a4e859bae267640a2db9
+      internalID: 2076777786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JUMP_5
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 355
+        width: 9
         height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b92065ada3a4945b3ac5af5b0446cbe7
-      internalID: 1848829786
+      spriteID: 4d220e4444e624c4c8413bc4d8abf66e
+      internalID: -2143827439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RUNNINGRIGHT_2
+      name: JUMP_6
       rect:
         serializedVersion: 2
-        x: 318
-        y: 6
-        width: 204
-        height: 500
+        x: 229
+        y: 28
+        width: 4
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,92 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661dbb91dd81b4a49ac8d1035dbd79b9
-      internalID: -784170573
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNNINGRIGHT_3
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 6
-        width: 251
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 681cb77733c0b47d0b63554ba8e809a6
-      internalID: 1197371871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNNINGRIGHT_4
-      rect:
-        serializedVersion: 2
-        x: 776
-        y: 6
-        width: 325
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 899ae7edf7c06444f9c492bfbf7c3580
-      internalID: -600623665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNNINGRIGHT_5
-      rect:
-        serializedVersion: 2
-        x: 1108
-        y: 6
-        width: 238
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56c30dc6a3f7a43d38c11f23aa0a58ac
-      internalID: 440586374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNNINGRIGHT_6
-      rect:
-        serializedVersion: 2
-        x: 1358
-        y: 6
-        width: 258
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6df71ce9e26fa44ec8e2c148b4d4d332
-      internalID: -1735892793
+      spriteID: 7cf69ad8c268b40ddbba83764b58efdc
+      internalID: -528471990
       vertices: []
       indices: 
       edges: []
@@ -280,13 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RUNNINGRIGHT_0: -1188459935
-      RUNNINGRIGHT_1: 1848829786
-      RUNNINGRIGHT_2: -784170573
-      RUNNINGRIGHT_3: 1197371871
-      RUNNINGRIGHT_4: -600623665
-      RUNNINGRIGHT_5: 440586374
-      RUNNINGRIGHT_6: -1735892793
+      JUMP_0: 1946321636
+      JUMP_1: 2117506945
+      JUMP_2: -104658666
+      JUMP_3: 917821851
+      JUMP_4: 2076777786
+      JUMP_5: -2143827439
+      JUMP_6: -528471990
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using System;
 
 [CreateAssetMenu(menuName = "InputReader")]
-public class InputReader : ScriptableObject, CustomInput.IPlayerActions
+public class InputReader : ScriptableObject, CustomInput.IPlayerActions, CustomInput.IVendingActions
 {
 
     private CustomInput customInput;
@@ -16,8 +16,10 @@ public class InputReader : ScriptableObject, CustomInput.IPlayerActions
             customInput = new CustomInput();
 
             customInput.Player.SetCallbacks(this);
+            customInput.Vending.SetCallbacks(this);
 
-            customInput.Player.Enable();
+            EnablePlayer();
+            EnableVending();
         }
     }
 
@@ -64,5 +66,21 @@ public class InputReader : ScriptableObject, CustomInput.IPlayerActions
         if (context.performed) {
             PoundEvent?.Invoke();
         }
+    }
+
+    public void DisablePlayer() {
+        customInput.Player.Disable();
+    }
+
+    public void EnablePlayer() {
+        customInput.Player.Enable();
+    }
+
+    public void EnableVending() {
+        customInput.Vending.Enable();
+    }
+
+    public void DisableVending() {
+        customInput.Vending.Disable();
     }
 }

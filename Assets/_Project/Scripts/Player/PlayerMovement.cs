@@ -155,6 +155,18 @@ public class PlayerMovement : MonoBehaviour {
         glideActive = true;
     }
 
+    public void DisableDash() {
+        inputReader.DashEvent -= Dash;
+    }
+
+    public void DisableGroundPound() {
+        inputReader.PoundEvent -= GroundPound;
+    }
+
+    public void DisableGlide() {
+        glideActive = false;
+    }
+
     // creates ghost/echo of player on dash
     private void CreateEcho() {
         GameObject echoCopy = Instantiate(echo, transform.position, Quaternion.identity);

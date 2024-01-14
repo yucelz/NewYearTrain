@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float speed;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     private float gravityScale;
     // for player floating when in air
     [SerializeField] float glideDrag;
-    private bool glideActive;
+    public bool glideActive;
     private float glideInput;
     [SerializeField] float groundPoundSpeed;
     private bool groundPounding;
@@ -36,6 +37,14 @@ public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody2D platformRb;
 
+    private bool timerActive;
+    [SerializeField] float maxTime;
+    private float currentTime;
+    [SerializeField] Slider timer;
+
+    public bool dashActive;
+    public bool poundActive;
+
     // Start is called before the first frame update
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +53,8 @@ public class PlayerMovement : MonoBehaviour {
         inputReader.MoveEvent += HandleMove;
         inputReader.GlideEvent += HandleGlide;
         inputReader.JumpEvent += Jump;
+
+        currentTime = maxTime;
     }
 
     // Update is called once per frame
@@ -80,6 +91,27 @@ public class PlayerMovement : MonoBehaviour {
         else if (groundPounding && OnGround()) {
             StartCoroutine(DelayMovement());
             rb.gravityScale = gravityScale;
+        }
+
+        if (timerActive) {
+            currentTime = Mathf.Clamp(currentTime -= Time.deltaTime, 0, maxTime);
+            timer.value = currentTime / maxTime;
+            if (currentTime <= 0) {
+                timerActive = false;
+                if (dashActive) {
+                    DisableDash();
+                }
+                else if (glideActive) {
+                    DisableGlide();
+                }
+                else if (poundActive) {
+                    DisableGroundPound();
+                }
+            }
+        }
+        else {
+            currentTime = maxTime;
+            timer.value = 0;
         }
     }
 
@@ -145,22 +177,29 @@ public class PlayerMovement : MonoBehaviour {
 
     public void ActivateDash() {
         inputReader.DashEvent += Dash;
+        dashActive = true;
+        timerActive = true;
     }
 
     public void ActivateGroundPound() {
         inputReader.PoundEvent += GroundPound;
+        poundActive = true;
+        timerActive = true;
     }
 
     public void ActivateGlide() {
         glideActive = true;
+        timerActive = true;
     }
 
     public void DisableDash() {
         inputReader.DashEvent -= Dash;
+        dashActive = false;
     }
 
     public void DisableGroundPound() {
         inputReader.PoundEvent -= GroundPound;
+        poundActive = false;
     }
 
     public void DisableGlide() {
@@ -196,4 +235,5 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     #endregion
+
 }

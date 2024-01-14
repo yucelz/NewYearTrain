@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     public GameObject vendingMachine;
     [SerializeField] InputReader inputReader;
     private GameObject player;
+    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         inputReader.OpenVendingEvent += DisplayVendingMachine;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -27,7 +30,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void DisplayVendingMachine() {
-        vendingMachine.SetActive(true);
-        inputReader.DisablePlayer();
+        if (!(playerMovement.dashActive || playerMovement.glideActive || playerMovement.poundActive)) {
+            vendingMachine.SetActive(true);
+            inputReader.DisablePlayer();
+        }
     }
 }

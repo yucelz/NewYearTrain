@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: daed9456dbbdaf84ea0f0d007947e9da
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _MainMenuScreen: {fileID: 4067125800703016420, guid: 04a800855e139614184dd9f984eafc34, type: 3}
+  - _HowToPlayScreen: {fileID: 2889577916017642534, guid: e373e9c73ec934849a6f127491be985b, type: 3}
+  - _CreditsScreen: {fileID: 9098664631666178389, guid: 469c5ee4cf90b2949affb7c8e1db35e5, type: 3}
+  - _StartButton: {instanceID: 0}
+  - _HowToPlayButton: {instanceID: 0}
+  - _CreditsButton: {instanceID: 0}
+  - _ExitButton: {instanceID: 0}
+  - _BackToMainMenuButton: {instanceID: 0}
+  - _BackToMainMenuButtonInHowToPlayScreen: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
